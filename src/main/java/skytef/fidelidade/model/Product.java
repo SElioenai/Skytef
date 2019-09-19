@@ -1,5 +1,6 @@
 package skytef.fidelidade.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,9 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int product_id;
+	@Column (nullable=false, length=200)
 	private String product_description;
+	@Column (nullable=true, length=200)
 	private double product_price;
 	
 	public int getId_product() {

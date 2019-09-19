@@ -1,5 +1,6 @@
 package skytef.fidelidade.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,15 +12,24 @@ public class SoftwareHouse {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int softwarehouse_id;
+	@Column (nullable=false, length=200)
 	private String social_reason;
+	@Column (nullable=false, length=200)
 	private String cnpj;
+	@Column (nullable=true, length=200)
 	private String f_name;
+	@Column (nullable=false, length=200)
 	private String trade_representative;
 	private String street;
+	@Column (nullable=false, length=200)
 	private String county;
+	@Column (nullable=false, length=200)
 	private String state;
+	@Column (nullable=true, length=200)
 	private String email;
+	@Column (nullable=true, length=200)
 	private String fone;
+	@Column (nullable=false, length=200)
 	private String register_date;
 	
 	public int getId_softwarehouse() {
