@@ -29,9 +29,9 @@ public class LoginController {
 		if (loginService.logar(user)) {
 			request.getSession().setAttribute("usuarioLogado",
 					user);
-			return "redirect:index";
+			return "redirect:createUser";
 		} else {
-			return "login";
+			return "hello_spring_boot";
 		}
 	}
 }

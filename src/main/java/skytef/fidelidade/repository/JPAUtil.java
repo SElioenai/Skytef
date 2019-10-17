@@ -8,7 +8,7 @@ public class JPAUtil {
 	private static EntityManagerFactory factory;
 	
 	static {
-		factory = Persistence.createEntityManagerFactory("usjtPU");
+		factory = Persistence.createEntityManagerFactory("sky");
 	}
 	
 	public static EntityManager getEntityManager() {

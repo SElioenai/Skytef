@@ -9,10 +9,10 @@ import skytef.fidelidade.interceptor.LoginInterceptor;
 @Configuration
 public class AppConfig implements WebMvcConfigurer {
 
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new LoginInterceptor()).
-		addPathPatterns("/**").
-		excludePathPatterns("/login", "/", "/fazerLogin");
-	}
+//	@Override
+//	public void addInterceptors(InterceptorRegistry registry) {
+//		registry.addInterceptor(new LoginInterceptor()).
+//		addPathPatterns("/**").
+//		excludePathPatterns("/login", "/", "/fazerLogin");
+//	}
 }

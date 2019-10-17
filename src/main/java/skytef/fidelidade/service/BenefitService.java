@@ -11,17 +11,15 @@ import skytef.fidelidade.repository.BenefitRepository;
 public class BenefitService {
 	@Autowired
 	private BenefitRepository benefitRepo;
-	
-	public void saveBenefit(Benefit benefit) {
-		benefitRepo.saveAndFlush(benefit);
-	}
-	public List<Benefit> listAll() {
-		List<Benefit> benefit = benefitRepo.findAll();
-		return benefit;
-	}
-	public void updateClient(Benefit benefit) {
-		benefitRepo.flush();
+//	
+//	public void saveBenefit(Benefit benefit) {
+//		benefitRepo.saveAndFlush(benefit);
+//	}
+//	public List<Benefit> listAll() {
+//		List<Benefit> benefit = benefitRepo.findAll();
+//		return benefit;
+//	}
+//	public void updateClient(Benefit benefit) {
+//		benefitRepo.flush();
 	}
 
-
-}

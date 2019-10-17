@@ -1,6 +1,7 @@
 package skytef.fidelidade.controller;
 
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping("/user")
+	@GetMapping("/use")
 	public ModelAndView clientList() {
 		ModelAndView mv = new ModelAndView("user_list");
 		List<User> user = UserService.listAll();
@@ -23,9 +24,14 @@ public class UserController {
 		return mv;
 	}
 
-	@PostMapping
-	public String save(User user) {
-		userService.saveUser(user);
-		return "redirect:/user";
+	@PostMapping("/user")
+	public User save(User user) {
+		Long id = Long.valueOf(new Random().nextLong());
+		User us = new User(id,
+				user.getName(),
+				user.getPassword());
+		userService.saveUser(us);
+//		return "redirect:/user";
+		return us;
 	}
 }
