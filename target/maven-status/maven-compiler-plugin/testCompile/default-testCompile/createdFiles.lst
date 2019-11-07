@@ -1,2 +1,2 @@
-skytef\fidelidade\CreateTableTest.class
-skytef\fidelidade\AppTest.class
+br\com\skytef\fidelidade\TesteInsereUmUsuario.class
+br\com\skytef\fidelidade\TesteCriarBaseETabelas.class
