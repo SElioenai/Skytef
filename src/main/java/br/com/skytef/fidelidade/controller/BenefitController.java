@@ -1,47 +1,63 @@
-package br.com.skytef.fidelidade.controller;
+package skytef.fidelidade.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-import br.com.skytef.fidelidade.model.Benefit;
-import br.com.skytef.fidelidade.repository.BenefitRepository;
+import skytef.fidelidade.model.Benefit;
+import skytef.fidelidade.repository.BenefitRepository;
+import skytef.fidelidade.service.BenefitService;
 
-@RestController
+@Controller
 public class BenefitController {
 	
 	@Autowired
 	private BenefitRepository benefitRepository;
+	
+	@Autowired
+	private BenefitService service;
 
-	@GetMapping("/benefits")
-	public List<Benefit> getAllBenefitList() {
-		//		ModelAndView mv = new ModelAndView("benefit_list");
-		//		List<Benefit> benefit = (List<Benefit>) benefitRepository.findAll();
-		//		mv.addObject("benefit", benefit);
-		//		mv.addObject(new Benefit());
-		//		return mv;
-		Iterable<Benefit> benefit = benefitRepository.findAll();
-		List<Benefit> benefitList = new ArrayList<Benefit>();
-		benefit.forEach(benefitList::add);
-		return benefitList;
+	@GetMapping("/isWorking")
+	public String getResponse() {
+		return "isWorking : True";
 	}
+	@GetMapping(value= {"/benefits"})
+	public ModelAndView getAllBenefitList(Benefit benefit) {
+//		HttpSession session = request.getSession();
+//		if(session.getAttribute("user") != null) {
+			ModelAndView mv = new ModelAndView("cadastroPontos");
+			List<Benefit> benefits = service.listAll();
+			mv.addObject("benefits", benefits);
+			mv.addObject(new Benefit());
+			return mv;
+		}
+//			else {
+//			ModelAndView mv = new ModelAndView("CadastroPontos");
+//			mv.addObject(new Benefit());
+//			return mv;
+//		}
+//	}
 
-	@PostMapping("/benefit")
-	public Benefit addBenefit(@RequestBody Benefit benefit) {
-//		Long id = Long.valueOf(new Random().nextLong());
-//		Benefit bnf = new Benefit(id, 
-//				benefit.getType(), 
-//				benefit.getName(), 
-//				benefit.getPoint(),
-//				benefit.getCompany());
-		benefitRepository.save(benefit);
-//		return "redirect:/benefit";
-		return benefit;
+	@PostMapping(value = {"/benefit"})
+	public String addBenefit(Benefit benefit) {
+//		if (benefitRepository.save(benefit) != null) {
+//			request.getSession().setAttribute("benefit", benefit);
+			service.addBenefit(benefit);
+			return "redirect:/benefits";
+//		} else {
+//			return "benefit";
+		}
 	}
-}
+		
+//		
+//		benefitRepository.save(benefit);
+////		return "redirect:/benefit";
+//		return bnf;
